@@ -1,16 +1,16 @@
 package pro.sky.StreamAPI.service;
 
+import org.springframework.stereotype.Service;
 import pro.sky.StreamAPI.exception.EmployeeNotFoundException;
 import pro.sky.StreamAPI.model.Employee;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparingInt;
-
+@Service
 public class DepartmentServiceImpl implements DepartmentService {
 
     private final EmployeeService employeeService;
@@ -37,15 +37,15 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Employee printEmployeeWithMaxSalaryFromDepartmentID(int departmentID) {
-        return employeeService
-                .findAll()
-                .stream()
-                .filter(e -> e.getDepartmentID() == departmentID)
-                .max(comparingInt(Employee::getSalary))
-                .orElseThrow(EmployeeNotFoundException::new);
+       return employeeService
+               .findAll()
+               .stream()
+               .filter(e -> e.getDepartmentID() == departmentID)
+               .max(comparingInt(Employee::getSalary))
+               .orElseThrow(EmployeeNotFoundException::new);
     }
 
-    @Override
+   @Override
     public Employee printEmployeeWithMinSalaryFromDepartmentID(int departmentID) {
         return employeeService
                 .findAll()

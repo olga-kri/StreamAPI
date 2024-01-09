@@ -26,11 +26,11 @@ public class DepartmentController {
     public Map<Integer, List<Employee>> allEmployeeFromEachDepartmentID() {
         return departmentService.printEmployeeFromEachDepartments();
     }
-    @GetMapping(path = "/max-salary")
+    @GetMapping("/max-salary")
     public Employee EmployeeWithMaxSalaryFromDepartmentID(@RequestParam int departmentID) {
         return departmentService.printEmployeeWithMaxSalaryFromDepartmentID(departmentID);
     }
-    @GetMapping(path = "/max-salary")
+   @GetMapping("/min-salary")
     public Employee EmployeeWithMinSalaryFromDepartmentID(@RequestParam int departmentID) {
         return departmentService.printEmployeeWithMinSalaryFromDepartmentID(departmentID);
     }
